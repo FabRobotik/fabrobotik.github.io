@@ -110,10 +110,10 @@ const Footer = () => (
       <div>
         <h4 className="footer-title">Contact</h4>
         <p style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--slate-400)', marginBottom: '16px' }}>
-          <MapPin size={18} style={{ color: 'var(--primary)' }} /> 12 Ave Innovation
+          <MapPin size={18} style={{ color: 'var(--primary)' }} /> Oullins-Pierre Bénite
         </p>
         <p style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--slate-400)' }}>
-          <Mail size={18} style={{ color: 'var(--primary)' }} /> hello@fabrobotik.fr
+          <Mail size={18} style={{ color: 'var(--primary)' }} /> fabrobotik@proton.me
         </p>
       </div>
     </div>
