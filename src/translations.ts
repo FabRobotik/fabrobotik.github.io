@@ -28,7 +28,7 @@ export const translations = {
       philosophy: {
         title: "Notre Philosophie",
         desc: "Nous croyons en la \"Forge Cognitive\" : l'idée que l'on comprend mieux une technologie en la construisant soi-même. Pas de théorie abstraite sans pratique concrète.",
-        perks: ["Open Source par défaut", "Apprentissage par l'échec", "Collaboration radicale"],
+        perks: ["Open Source par défaut", "Apprentissage par l'échec", "Collaboration active"],
       },
       team: {
         title: "L'ÉQUIPE {span}.",
@@ -127,7 +127,7 @@ export const translations = {
       philosophy: {
         title: "Our Philosophy",
         desc: "We believe in the \"Cognitive Forge\": the idea that technology is best understood by building it yourself. No abstract theory without concrete practice.",
-        perks: ["Open Source by default", "Learning through failure", "Radical collaboration"],
+        perks: ["Open Source by default", "Learning through failure", "Active collaboration"],
       },
       team: {
         title: "THE {span} TEAM.",
