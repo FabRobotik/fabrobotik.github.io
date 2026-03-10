@@ -436,6 +436,36 @@ nav.scrolled {
   .img-small { display: none; }
 }
 
+.btn-lang {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.btn-lang:hover {
+  color: var(--primary);
+}
+
+.btn-lang.active {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.lang-toggle-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  .lang-toggle-mobile {
+    display: none;
+  }
+}
+
 /* Utility classes */
 .grid { display: grid; }
 .md-cols-2 { grid-template-columns: repeat(2, 1fr); }

@@ -4,7 +4,115 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FabRobotik</title>
+    <meta name="description" content="FabRobotik - Apprenez l'informatique, maîtrisez l'IA et construisez vos propres systèmes robotiques. Formation, atelier et communauté de passionnés." />
+    <meta name="keywords" content="FabRobotik, robotique, intelligence artificielle, IA, informatique, formation, atelier, Oullins, Pierre Bénite, impression 3D, LeRobot" />
+    <meta name="author" content="Alexandre Chapin" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fabrobotik.github.io/" />
+    <meta property="og:title" content="FabRobotik - Forger l'intelligence de demain" />
+    <meta property="og:description" content="Apprenez l'informatique, maîtrisez l'IA et construisez vos propres systèmes robotiques au sein de notre communauté." />
+    <meta property="og:image" content="https://fabrobotik.github.io/alex.jpeg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://fabrobotik.github.io/" />
+    <meta property="twitter:title" content="FabRobotik - Forger l'intelligence de demain" />
+    <meta property="twitter:description" content="Apprenez l'informatique, maîtrisez l'IA et construisez vos propres systèmes robotiques au sein de notre communauté." />
+    <meta property="twitter:image" content="https://fabrobotik.github.io/alex.jpeg" />
+
+    <title>FabRobotik - Forger l'intelligence de demain</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "FabRobotik",
+        "url": "https://fabrobotik.github.io/",
+        "logo": "https://fabrobotik.github.io/alex.jpeg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "fabrobotik@proton.me",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://github.com/FabRobotik"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FabRobotik",
+        "url": "https://fabrobotik.github.io/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://fabrobotik.github.io/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Accueil",
+            "url": "https://fabrobotik.github.io/"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Cours",
+            "url": "https://fabrobotik.github.io/cours"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "L'Atelier",
+            "url": "https://fabrobotik.github.io/services"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "Adhérer",
+            "url": "https://fabrobotik.github.io/membership"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "À Propos",
+            "url": "https://fabrobotik.github.io/about"
+          }
+        ]
+      }
+    </script>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>
