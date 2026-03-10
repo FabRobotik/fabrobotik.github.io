@@ -21,7 +21,6 @@ import {
   Linkedin,
   Target,
   Github,
-  Globe,
   ArrowLeft,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
