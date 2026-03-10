@@ -66,7 +66,6 @@ const Navbar = () => {
       <div className="container nav-container">
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <img src="/logo_medium.png" alt="FabRobotik Logo" style={{ height: '50px', width: 'auto' }} />
-          <span style={{ fontWeight: 900, fontSize: '1.8rem', letterSpacing: '-0.04em', color: 'var(--dark)' }}>FabRobotik</span>
         </Link>
         
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -119,8 +118,7 @@ const Footer = () => {
       <div className="container footer-grid">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
-            <img src="/logo.png" alt="FabRobotik Logo" style={{ height: '40px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
-            <span style={{ fontWeight: 900, fontSize: '1.6rem' }}>FabRobotik</span>
+            <img src="logo.png" alt="FabRobotik Logo" style={{ height: '40px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
           </div>
           <p style={{ color: 'var(--slate-400)', marginBottom: '32px', lineHeight: '1.8' }}>
             {t.footer.desc}
