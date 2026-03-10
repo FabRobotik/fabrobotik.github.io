@@ -357,10 +357,11 @@ nav.scrolled {
 }
 
 .philosophy-card {
-  background: var(--dark);
+  background: var(--primary);
   color: var(--white);
   padding: 64px;
   border-radius: 40px;
+  box-shadow: var(--shadow-xl);
 }
 
 /* --- FOOTER --- */

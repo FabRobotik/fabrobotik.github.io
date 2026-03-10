@@ -20,6 +20,7 @@ import {
   Target,
   Github,
   ArrowLeft,
+  Users,
   Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -40,6 +41,14 @@ const LanguageContext = createContext<{
 const useTranslation = () => useContext(LanguageContext);
 
 // --- Shared Components ---
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -203,8 +212,8 @@ const About = () => {
     <PageTransition>
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
-          <div style={{ maxWidth: '850px', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '32px' }}>
+          <div style={{ maxWidth: '850px', marginBottom: '80px', position: 'relative', zIndex: 5 }}>
+            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '32px', color: 'var(--dark)' }}>
               {t.about.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.about.titleSpan}</span>{t.about.title.split('{span}')[1]}
             </h2>
             <p style={{ fontSize: '1.35rem', color: 'var(--slate-600)', lineHeight: '1.8' }}>
@@ -217,24 +226,24 @@ const About = () => {
               {t.about.history.map((item, i) => (
                 <div key={i} className="history-item">
                   <span style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '1.4rem' }}>{item.year}</span>
-                  <h4 style={{ margin: '10px 0', fontSize: '1.5rem' }}>{item.title}</h4>
+                  <h4 style={{ margin: '10px 0', fontSize: '1.5rem', color: 'var(--dark)' }}>{item.title}</h4>
                   <p style={{ color: 'var(--slate-500)', fontSize: '1rem' }}>{item.desc}</p>
                 </div>
               ))}
             </div>
             <div className="philosophy-card">
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
-                 <Target size={48} style={{ color: 'var(--secondary)' }} />
-                 <h3 style={{ fontSize: '2.2rem' }}>{t.about.philosophy.title}</h3>
+                 <Target size={48} style={{ color: 'white' }} />
+                 <h3 style={{ fontSize: '2.2rem', color: 'white' }}>{t.about.philosophy.title}</h3>
               </div>
-              <p style={{ color: 'var(--slate-400)', lineHeight: '1.8', marginBottom: '32px', fontSize: '1.1rem' }}>
+              <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: '1.8', marginBottom: '32px', fontSize: '1.1rem' }}>
                 {t.about.philosophy.desc}
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 {t.about.philosophy.perks.map((perk, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
-                    <div style={{ backgroundColor: 'rgba(99, 102, 241, 0.2)', padding: '8px', borderRadius: '12px' }}>
-                       <CheckCircle2 size={20} style={{ color: 'var(--primary-light)' }} />
+                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem', color: 'white' }}>
+                    <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', padding: '8px', borderRadius: '12px' }}>
+                       <CheckCircle2 size={20} style={{ color: 'white' }} />
                     </div>
                     {perk}
                   </li>
@@ -243,7 +252,7 @@ const About = () => {
             </div>
           </div>
 
-          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '60px', textAlign: 'center' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '60px', textAlign: 'center', color: 'var(--dark)' }}>
             {t.about.team.title.split('{span}')[0]} <span style={{ color: 'var(--primary)' }}>{t.about.team.titleSpan}</span>{t.about.team.title.split('{span}')[1]}
           </h2>
           <div className="grid md-cols-3 gap-8">
@@ -252,7 +261,7 @@ const About = () => {
             ].map((member, i) => (
               <div key={i} className="card member-card">
                 <img src={member.img} alt={member.name} className="member-image" />
-                <h4 style={{ fontSize: '1.5rem' }}>{member.name}</h4>
+                <h4 style={{ fontSize: '1.5rem', color: 'var(--dark)' }}>{member.name}</h4>
                 <p style={{ color: 'var(--primary)', fontSize: '1rem', fontWeight: 700, marginTop: '8px' }}>{member.role}</p>
               </div>
             ))}
@@ -621,6 +630,7 @@ function App() {
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
       <Router>
+        <ScrollToTop />
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
           <Navbar />
           <main style={{ flexGrow: 1 }}>
