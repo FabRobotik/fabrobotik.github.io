@@ -20,7 +20,6 @@ import {
   Target,
   Github,
   ArrowLeft,
-  Users,
   Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
