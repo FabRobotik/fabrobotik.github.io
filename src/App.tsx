@@ -4,24 +4,24 @@ import {
   Printer, 
   MapPin, 
   Calendar as CalendarIcon, 
-  BrainCircuit, 
   Menu, 
   X, 
   Mail, 
   ChevronRight, 
-  Zap, 
   Shield, 
   Heart, 
   Download, 
   Clock, 
   CheckCircle2, 
   User, 
-  Instagram,
+  Facebook,
   Twitter,
   Linkedin,
   Target,
   Github,
   ArrowLeft,
+  Users,
+  Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { translations, type Language } from './translations';
@@ -56,8 +56,6 @@ const Navbar = () => {
 
   const links = [
     { name: t.nav.home, path: '/' },
-    { name: t.nav.about, path: '/about' },
-    { name: t.nav.news, path: '/news' },
     { name: t.nav.courses, path: '/cours' },
     { name: t.nav.workshop, path: '/services' },
     { name: t.nav.reserve, path: '/reservation' },
@@ -67,11 +65,9 @@ const Navbar = () => {
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
       <div className="container nav-container">
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ backgroundColor: 'var(--primary)', padding: '10px', borderRadius: '14px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <BrainCircuit size={28} />
-          </div>
-          <span style={{ fontWeight: 900, fontSize: '1.6rem', letterSpacing: '-0.06em', color: 'var(--dark)' }}>FabRobotik</span>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <img src="/logo_medium.png" alt="FabRobotik Logo" style={{ height: '50px', width: 'auto' }} />
+          <span style={{ fontWeight: 900, fontSize: '1.8rem', letterSpacing: '-0.04em', color: 'var(--dark)' }}>FabRobotik</span>
         </Link>
         
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -85,47 +81,28 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          
-          <div className="lang-toggle-mobile" style={{ marginTop: '20px', gap: '16px' }}>
-            <button 
-              className={`btn-lang ${lang === 'fr' ? 'active' : ''}`} 
-              onClick={() => setLang('fr')}
-              style={{ fontSize: '1.5rem', opacity: lang === 'fr' ? 1 : 0.5 }}
-            >
-              🇫🇷
-            </button>
-            <button 
-              className={`btn-lang ${lang === 'en' ? 'active' : ''}`} 
-              onClick={() => setLang('en')}
-              style={{ fontSize: '1.5rem', opacity: lang === 'en' ? 1 : 0.5 }}
-            >
-              🇬🇧
-            </button>
-          </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div className="lang-toggle hidden-mobile" style={{ display: 'flex', alignItems: 'center', marginRight: '8px', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'var(--slate-100)', padding: '4px', borderRadius: '12px' }}>
             <button 
               className={`btn-lang ${lang === 'fr' ? 'active' : ''}`} 
               onClick={() => setLang('fr')}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.25rem', opacity: lang === 'fr' ? 1 : 0.4, transition: 'opacity 0.2s' }}
-              title="Français"
+              style={{ fontSize: '1.4rem', padding: '4px 8px', borderRadius: '8px', background: lang === 'fr' ? 'var(--white)' : 'transparent', boxShadow: lang === 'fr' ? 'var(--shadow-sm)' : 'none', transition: 'var(--transition)' }}
             >
               🇫🇷
             </button>
             <button 
               className={`btn-lang ${lang === 'en' ? 'active' : ''}`} 
               onClick={() => setLang('en')}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.25rem', opacity: lang === 'en' ? 1 : 0.4, transition: 'opacity 0.2s' }}
-              title="English"
+              style={{ fontSize: '1.4rem', padding: '4px 8px', borderRadius: '8px', background: lang === 'en' ? 'var(--white)' : 'transparent', boxShadow: lang === 'en' ? 'var(--shadow-sm)' : 'none', transition: 'var(--transition)' }}
             >
               🇬🇧
             </button>
           </div>
           
           <Link to="/membership" className="btn btn-primary hidden-mobile">
-            {t.nav.membership} <ChevronRight size={18} />
+            <Heart size={18} />
           </Link>
           <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={32} /> : <Menu size={32} />}
@@ -142,17 +119,17 @@ const Footer = () => {
     <footer className="footer">
       <div className="container footer-grid">
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px' }}>
-            <BrainCircuit size={32} style={{ color: 'var(--primary)' }} />
-            <span style={{ fontWeight: 900, fontSize: '1.5rem' }}>FabRobotik</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
+            <img src="/logo.png" alt="FabRobotik Logo" style={{ height: '40px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
+            <span style={{ fontWeight: 900, fontSize: '1.6rem' }}>FabRobotik</span>
           </div>
-          <p style={{ color: 'var(--slate-400)', marginBottom: '32px', lineHeight: '1.6' }}>
+          <p style={{ color: 'var(--slate-400)', marginBottom: '32px', lineHeight: '1.8' }}>
             {t.footer.desc}
           </p>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <a href="#" className="social-icon"><Instagram size={20} /></a>
-            <a href="#" className="social-icon"><Twitter size={20} /></a>
-            <a href="#" className="social-icon"><Linkedin size={20} /></a>
+          <div style={{ display: 'flex', gap: '14px' }}>
+            <a href="https://www.facebook.com/profile.php?id=61585205717978" className="social-icon"><Facebook size={20} /></a>
+            <a href="https://x.com/fabrobotik" className="social-icon"><Twitter size={20} /></a>
+            <a href="https://www.linkedin.com/company/fabrobotik/about" className="social-icon"><Linkedin size={20} /></a>
             <a href="https://github.com/FabRobotik" className="social-icon"><Github size={20} /></a>
           </div>
         </div>
@@ -175,7 +152,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="container" style={{ marginTop: '80px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
-        <p style={{ color: 'var(--slate-500)', fontSize: '0.875rem' }}>
+        <p style={{ color: 'var(--slate-500)', fontSize: '0.95rem' }}>
           © 2026 FabRobotik. {t.footer.madeWith.split('{heart}')[0]} <Heart size={14} style={{ color: 'var(--accent)', display: 'inline' }} /> {t.footer.madeWith.split('{heart}')[1]}
         </p>
       </div>
@@ -184,7 +161,7 @@ const Footer = () => {
 };
 
 const PageTransition = ({ children }: { children: React.ReactNode }) => (
-  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}>
+  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}>
     {children}
   </motion.div>
 );
@@ -195,28 +172,29 @@ const Home = () => {
   const { t } = useTranslation();
   return (
     <PageTransition>
-      <header className="section" style={{ paddingTop: '180px' }}>
-        <div className="container grid md-cols-2 gap-20" style={{ alignItems: 'center' }}>
+      <header className="section" style={{ paddingTop: '180px', position: 'relative', overflow: 'hidden' }}>
+        <div className="container grid md-cols-2 gap-20" style={{ alignItems: 'center', position: 'relative', zIndex: 2 }}>
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 16px', backgroundColor: 'rgba(79, 70, 229, 0.1)', color: 'var(--primary)', borderRadius: '99px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '32px' }}>
-              <Zap size={14} /> {t.home.badge}
-            </div>
-            <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', marginBottom: '32px' }}>
+            <h1 style={{ fontSize: 'clamp(3.5rem, 8vw, 5.5rem)', marginBottom: '32px', lineHeight: 1 }}>
               {t.home.title.split('{span}')[0]} <span style={{ color: 'var(--primary)' }}>FabRobotik</span>{t.home.title.split('{span}')[1]}
             </h1>
-            <p style={{ fontSize: '1.25rem', color: 'var(--slate-600)', marginBottom: '48px' }}>
+            <p style={{ fontSize: '1.35rem', color: 'var(--slate-600)', marginBottom: '48px', lineHeight: '1.7' }}>
               {t.home.desc}
             </p>
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
               <Link to="/cours" className="btn btn-primary">{t.home.btnCourses}</Link>
-              <Link to="/reservation" className="btn btn-outline">{t.home.btnWorkshop}</Link>
+              <Link to="/reservation" className="btn btn-outline">{t.home.btnWorkshop} <Sparkles size={18} /></Link>
             </div>
           </div>
           <div className="img-overlap">
-             <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" alt="Robot" className="img-main" />
-             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=500" alt="Lab" className="img-small" />
+             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="Robotik Community" className="img-main" />
+             <div style={{ position: 'absolute', top: '-20px', right: '-20px', backgroundColor: 'var(--primary)', color: 'white', padding: '20px', borderRadius: '24px', fontWeight: 800, transform: 'rotate(12deg)', boxShadow: 'var(--shadow-lg)' }}>
+                {t.home.badge}
+             </div>
           </div>
         </div>
+        <div className="blob" style={{ width: '600px', height: '600px', top: '-200px', right: '-100px' }}></div>
+        <div className="blob" style={{ width: '400px', height: '400px', bottom: '-100px', left: '-100px', backgroundColor: 'var(--secondary)' }}></div>
       </header>
     </PageTransition>
   );
@@ -228,42 +206,47 @@ const About = () => {
     <PageTransition>
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
-          <div style={{ maxWidth: '800px', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '32px' }}>
+          <div style={{ maxWidth: '850px', marginBottom: '80px' }}>
+            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '32px' }}>
               {t.about.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.about.titleSpan}</span>{t.about.title.split('{span}')[1]}
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'var(--slate-600)', lineHeight: '1.8' }}>
+            <p style={{ fontSize: '1.35rem', color: 'var(--slate-600)', lineHeight: '1.8' }}>
               {t.about.desc}
             </p>
           </div>
 
           <div className="grid md-cols-2 gap-20" style={{ marginBottom: '120px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
               {t.about.history.map((item, i) => (
                 <div key={i} className="history-item">
-                  <span style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '1.25rem' }}>{item.year}</span>
-                  <h4 style={{ margin: '8px 0' }}>{item.title}</h4>
-                  <p style={{ color: 'var(--slate-500)', fontSize: '0.9375rem' }}>{item.desc}</p>
+                  <span style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '1.4rem' }}>{item.year}</span>
+                  <h4 style={{ margin: '10px 0', fontSize: '1.5rem' }}>{item.title}</h4>
+                  <p style={{ color: 'var(--slate-500)', fontSize: '1rem' }}>{item.desc}</p>
                 </div>
               ))}
             </div>
             <div className="philosophy-card">
-              <Target size={40} style={{ color: 'var(--primary)', marginBottom: '24px' }} />
-              <h3 style={{ fontSize: '2rem', marginBottom: '24px' }}>{t.about.philosophy.title}</h3>
-              <p style={{ color: 'var(--slate-400)', lineHeight: '1.8', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
+                 <Target size={48} style={{ color: 'var(--secondary)' }} />
+                 <h3 style={{ fontSize: '2.2rem' }}>{t.about.philosophy.title}</h3>
+              </div>
+              <p style={{ color: 'var(--slate-400)', lineHeight: '1.8', marginBottom: '32px', fontSize: '1.1rem' }}>
                 {t.about.philosophy.desc}
               </p>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 {t.about.philosophy.perks.map((perk, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                    <CheckCircle2 size={18} style={{ color: 'var(--primary)' }} /> {perk}
+                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
+                    <div style={{ backgroundColor: 'rgba(99, 102, 241, 0.2)', padding: '8px', borderRadius: '12px' }}>
+                       <CheckCircle2 size={20} style={{ color: 'var(--primary-light)' }} />
+                    </div>
+                    {perk}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '60px', textAlign: 'center' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '60px', textAlign: 'center' }}>
             {t.about.team.title.split('{span}')[0]} <span style={{ color: 'var(--primary)' }}>{t.about.team.titleSpan}</span>{t.about.team.title.split('{span}')[1]}
           </h2>
           <div className="grid md-cols-3 gap-8">
@@ -272,8 +255,8 @@ const About = () => {
             ].map((member, i) => (
               <div key={i} className="card member-card">
                 <img src={member.img} alt={member.name} className="member-image" />
-                <h4>{member.name}</h4>
-                <p style={{ color: 'var(--primary)', fontSize: '0.875rem', fontWeight: 700, marginTop: '4px' }}>{member.role}</p>
+                <h4 style={{ fontSize: '1.5rem' }}>{member.name}</h4>
+                <p style={{ color: 'var(--primary)', fontSize: '1rem', fontWeight: 700, marginTop: '8px' }}>{member.role}</p>
               </div>
             ))}
           </div>
@@ -307,11 +290,11 @@ const News = () => {
               <img 
                 src={article.image} 
                 alt={article.title} 
-                style={{ width: '100%', borderRadius: '32px', marginBottom: '48px', height: '400px', objectFit: 'cover' }} 
+                style={{ width: '100%', borderRadius: '48px', marginBottom: '48px', height: '450px', objectFit: 'cover', boxShadow: 'var(--shadow-lg)' }} 
               />
               <span style={{ color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{article.date}</span>
               <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', margin: '24px 0' }}>{article.title}</h1>
-              <div style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--slate-600)' }}>
+              <div style={{ fontSize: '1.25rem', lineHeight: '1.9', color: 'var(--slate-600)' }}>
                 {article.content}
               </div>
             </div>
@@ -325,7 +308,7 @@ const News = () => {
     <PageTransition>
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
-          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '80px' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '80px' }}>
             {t.news.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.news.titleSpan}</span>{t.news.title.split('{span}')[1]}
           </h2>
           
@@ -336,12 +319,12 @@ const News = () => {
                   <img 
                     src={article.image} 
                     alt={article.title} 
-                    style={{ width: '100%', height: '250px', objectFit: 'cover' }} 
+                    style={{ width: '100%', height: '280px', objectFit: 'cover' }} 
                   />
-                  <div style={{ padding: '32px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ color: 'var(--slate-400)', fontSize: '0.875rem', fontWeight: 700 }}>{article.date}</span>
-                    <h3 style={{ margin: '16px 0', fontSize: '1.75rem' }}>{article.title}</h3>
-                    <p style={{ color: 'var(--slate-600)', marginBottom: '24px', flexGrow: 1 }}>{article.excerpt}</p>
+                  <div style={{ padding: '40px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ color: 'var(--slate-400)', fontSize: '0.95rem', fontWeight: 700 }}>{article.date}</span>
+                    <h3 style={{ margin: '16px 0', fontSize: '1.85rem' }}>{article.title}</h3>
+                    <p style={{ color: 'var(--slate-600)', marginBottom: '32px', flexGrow: 1, fontSize: '1.1rem' }}>{article.excerpt}</p>
                     <Link to={`/news/${article.id}`} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
                       {t.news.readMore} <ChevronRight size={18} />
                     </Link>
@@ -350,12 +333,12 @@ const News = () => {
               ))}
             </div>
           ) : (
-            <div style={{ textAlign: 'center', padding: '80px 0', backgroundColor: 'var(--slate-50)', borderRadius: '32px', border: '2px dashed var(--slate-200)' }}>
-              <div style={{ backgroundColor: 'white', width: '80px', height: '80px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05)' }}>
-                <BrainCircuit size={40} style={{ color: 'var(--primary)' }} />
+            <div style={{ textAlign: 'center', padding: '100px 0', backgroundColor: '#f8fafc', borderRadius: '48px', border: '3px dashed var(--slate-200)' }}>
+              <div style={{ backgroundColor: 'white', width: '100px', height: '100px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 32px', boxShadow: 'var(--shadow-md)' }}>
+                <Sparkles size={48} style={{ color: 'var(--primary)' }} />
               </div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>{t.news.noNews}</h3>
-              <p style={{ color: 'var(--slate-500)', maxWidth: '400px', margin: '0 auto' }}>{t.news.noNewsDesc}</p>
+              <h3 style={{ fontSize: '1.85rem', marginBottom: '16px' }}>{t.news.noNews}</h3>
+              <p style={{ color: 'var(--slate-500)', maxWidth: '450px', margin: '0 auto', fontSize: '1.1rem' }}>{t.news.noNewsDesc}</p>
             </div>
           )}
         </div>
@@ -374,22 +357,22 @@ const Courses = () => {
     <PageTransition>
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
-          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '80px' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '80px' }}>
             {t.courses.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.courses.titleSpan}</span>{t.courses.title.split('{span}')[1]}
           </h2>
           <div className="grid md-cols-3 gap-8">
             {t.courses.list.map((c, i) => (
               <div key={i} className="card course-card" style={{ padding: 0 }}>
                 <img src={[
-                  "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80&w=500",
-                  "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=500",
-                  "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=500"
+                  "duck_hf.png",
+                  "ia.jpg",
+                  "so100.jfif"
                 ][i]} alt={c.title} className="course-image" />
                 <div style={{ padding: '32px' }}>
-                  <h3>{c.title}</h3>
-                  <div style={{ display: 'flex', gap: '12px', margin: '16px 0', color: 'var(--slate-500)', fontSize: '0.875rem' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Clock size={14} /> {c.dur.includes('day') ? t.courses.day : t.courses.duration.replace('{d}', c.dur)}
+                  <h3 style={{ fontSize: '1.5rem' }}>{c.title}</h3>
+                  <div style={{ display: 'flex', gap: '12px', margin: '16px 0', color: 'var(--slate-500)', fontSize: '0.95rem' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Clock size={16} /> {c.dur.includes('day') ? t.courses.day : t.courses.duration.replace('{d}', c.dur)}
                     </span>
                   </div>
                   <div className="course-price">{t.courses.upcoming}</div>
@@ -410,8 +393,8 @@ const Services = () => {
     <PageTransition>
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '80px', flexWrap: 'wrap', gap: '24px' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '80px', flexWrap: 'wrap', gap: '32px' }}>
+            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)' }}>
               {t.services.title.split('{span}')[0]} <br /><span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.services.titleSpan}</span>{t.services.title.split('{span}')[1]}
             </h2>
             <button className="btn btn-outline no-print" onClick={() => window.print()}>
@@ -419,13 +402,16 @@ const Services = () => {
             </button>
           </div>
           <div className="card grid md-cols-2 gap-20" style={{ alignItems: 'center' }}>
-            <img src="https://images.unsplash.com/photo-1631284555447-64355d91d158?auto=format&fit=crop&q=80&w=800" alt="Lab" style={{ width: '100%', borderRadius: '16px' }} />
+            <img src="lab.jpg" alt="Lab" style={{ width: '100%', borderRadius: '32px', boxShadow: 'var(--shadow-lg)' }} />
             <div>
-              <h3>{t.services.equipment.title}</h3>
-              <p style={{ color: 'var(--slate-600)', margin: '20px 0' }}>{t.services.equipment.desc}</p>
+              <h3 style={{ fontSize: '2rem' }}>{t.services.equipment.title}</h3>
+              <p style={{ color: 'var(--slate-600)', margin: '24px 0', fontSize: '1.1rem' }}>{t.services.equipment.desc}</p>
               <ul style={{ listStyle: 'none' }}>
                 {t.services.equipment.items.map((item, i) => (
-                  <li key={i} style={{ marginBottom: '16px' }}><strong>{item.split(' - ')[0]}</strong> - {item.split(' - ')[1]}</li>
+                  <li key={i} style={{ marginBottom: '20px', fontSize: '1.05rem', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    <div style={{ backgroundColor: 'var(--primary)', width: '8px', height: '8px', borderRadius: '50%', marginTop: '10px', flexShrink: 0 }}></div>
+                    <span><strong>{item.split(' - ')[0]}</strong> - {item.split(' - ')[1]}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -440,6 +426,7 @@ const Reservation = () => {
   const { t } = useTranslation();
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [selectedMachine, setSelectedMachine] = useState(t.reservation.resources[0]);
+  const [isSending, setIsSending] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
   // Use state for reservations to keep them consistent across renders
@@ -466,18 +453,47 @@ const Reservation = () => {
     localStorage.setItem('fabrobotik_bookings', JSON.stringify(bookedDates));
   }, [bookedDates]);
 
-  const sendEmail = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedDate !== null) {
-      const currentMachineBookings = bookedDates[selectedMachine] || [];
-      if (!currentMachineBookings.includes(selectedDate)) {
-        setBookedDates({
-          ...bookedDates,
-          [selectedMachine]: [...currentMachineBookings, selectedDate]
-        });
+    if (!selectedDate || !form.current) return;
+
+    setIsSending(true);
+
+    const formData = new FormData(form.current);
+    // On ajoute la date de manière explicite pour le mail
+    formData.append('date_de_reservation', `${selectedDate} ${t.reservation.month}`);
+
+    // URL Formspree (à configurer dans GitHub Secrets / .env)
+    const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/votre_id";
+
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        const currentMachineBookings = bookedDates[selectedMachine] || [];
+        if (!currentMachineBookings.includes(selectedDate)) {
+          setBookedDates({
+            ...bookedDates,
+            [selectedMachine]: [...currentMachineBookings, selectedDate]
+          });
+        }
+        alert(t.reservation.alert);
+        setSelectedDate(null);
+        form.current?.reset();
+      } else {
+        throw new Error('Formspree error');
       }
-      alert(t.reservation.alert);
-      setSelectedDate(null);
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert("Oups ! Une erreur est survenue lors de l'envoi. Vous pouvez nous contacter directement à fabrobotik@proton.me");
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -495,11 +511,11 @@ const Reservation = () => {
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container grid md-cols-2 gap-20">
           <div>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '32px' }}>{t.reservation.title}</h2>
-            <p style={{ color: 'var(--slate-600)', marginBottom: '40px' }}>{t.reservation.desc}</p>
+            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '32px' }}>{t.reservation.title}</h2>
+            <p style={{ color: 'var(--slate-600)', marginBottom: '48px', fontSize: '1.2rem' }}>{t.reservation.desc}</p>
             <div className="card">
               <div className="calendar-grid">
-                {t.reservation.calendarDays.map(d => <div key={d} style={{ textAlign: 'center', fontWeight: 800, fontSize: '0.75rem', color: 'var(--slate-400)' }}>{d}</div>)}
+                {t.reservation.calendarDays.map(d => <div key={d} style={{ textAlign: 'center', fontWeight: 800, fontSize: '0.85rem', color: 'var(--slate-400)', textTransform: 'uppercase' }}>{d}</div>)}
                 {days.map(d => (
                   <div key={d.day} className={`calendar-day ${d.status} ${selectedDate === d.day ? 'selected' : ''}`} onClick={() => d.status === 'free' && setSelectedDate(d.day)}>
                     {d.day}
@@ -511,17 +527,17 @@ const Reservation = () => {
           
           <div className="form-card">
             <div className="form-header">
-              <h3 style={{ fontSize: '1.75rem' }}>{t.reservation.finalize}</h3>
+              <h3 style={{ fontSize: '2rem' }}>{t.reservation.finalize}</h3>
             </div>
-            <form ref={form} onSubmit={sendEmail}>
-              <div className="form-group">
-                <label className="form-label"><User size={14} style={{ marginRight: 8 }} /> {t.reservation.identity}</label>
-                <input type="text" name="user_name" className="form-input" placeholder={t.reservation.namePlaceholder} required />
+            <form ref={form} onSubmit={handleSubmit}>
+              <div className="form-group" style={{ marginBottom: '24px' }}>
+                <label className="form-label"><User size={16} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t.reservation.identity}</label>
+                <input type="text" name="nom_utilisateur" className="form-input" placeholder={t.reservation.namePlaceholder} required />
               </div>
-              <div className="form-group">
-                <label className="form-label"><Printer size={14} style={{ marginRight: 8 }} /> {t.reservation.resource}</label>
+              <div className="form-group" style={{ marginBottom: '24px' }}>
+                <label className="form-label"><Printer size={16} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t.reservation.resource}</label>
                 <select 
-                  name="machine" 
+                  name="machine_choisie" 
                   className="form-select" 
                   value={selectedMachine} 
                   onChange={(e) => {
@@ -532,11 +548,11 @@ const Reservation = () => {
                   {t.reservation.resources.map(r => <option key={r} value={r}>{r}</option>)}
                 </select>
               </div>
-              <div className="form-group">
-                <label className="form-label"><CalendarIcon size={14} style={{ marginRight: 8 }} /> {t.reservation.date}</label>
+              <div className="form-group" style={{ marginBottom: '32px' }}>
+                <label className="form-label"><CalendarIcon size={16} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t.reservation.date}</label>
                 <input 
                   type="text" 
-                  name="date" 
+                  name="date_cliquee" 
                   className="form-input" 
                   value={selectedDate ? `${selectedDate} ${t.reservation.month}` : ''} 
                   readOnly 
@@ -549,8 +565,12 @@ const Reservation = () => {
                   }}
                 />
               </div>
-              <button className="btn btn-primary" style={{ width: '100%', padding: '18px' }} disabled={!selectedDate}>
-                {t.reservation.confirm}
+              <button 
+                className="btn btn-primary" 
+                style={{ width: '100%', padding: '20px', fontSize: '1.1rem' }} 
+                disabled={!selectedDate || isSending}
+              >
+                {isSending ? "Envoi en cours..." : t.reservation.confirm}
               </button>
             </form>
           </div>
@@ -567,28 +587,28 @@ const Membership = () => {
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>{t.membership.title}</h2>
-            <p style={{ fontSize: '1.25rem', color: 'var(--slate-600)', marginTop: '24px' }}>{t.membership.desc}</p>
+            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)' }}>{t.membership.title}</h2>
+            <p style={{ fontSize: '1.35rem', color: 'var(--slate-600)', marginTop: '24px', maxWidth: '700px', marginInline: 'auto' }}>{t.membership.desc}</p>
           </div>
           
-          <div className="grid md-cols-2 gap-8" style={{ maxWidth: '900px', marginInline: 'auto' }}>
+          <div className="grid md-cols-2 gap-8" style={{ maxWidth: '950px', marginInline: 'auto' }}>
             {t.membership.plans.map((plan, i) => (
-              <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: i === 0 ? '2px solid var(--primary)' : '1px solid var(--slate-200)' }}>
-                <h4 style={{ fontSize: '1.5rem', marginBottom: '24px' }}>{plan.title}</h4>
-                <div style={{ fontSize: '3.5rem', fontWeight: 900, marginBottom: '32px' }}>{i === 0 ? '40€' : '20€'}<span style={{ fontSize: '1rem', fontWeight: 400, color: 'var(--slate-400)' }}>{t.membership.perYear}</span></div>
+              <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: i === 0 ? '3px solid var(--primary)' : '1px solid var(--slate-200)', position: 'relative' }}>
+                <h4 style={{ fontSize: '1.85rem', marginBottom: '24px' }}>{plan.title}</h4>
+                <div style={{ fontSize: '4rem', fontWeight: 900, marginBottom: '32px', color: 'var(--dark)' }}>{i === 0 ? '60€' : '30€'}<span style={{ fontSize: '1.1rem', fontWeight: 400, color: 'var(--slate-400)' }}>{t.membership.perYear}</span></div>
                 <ul style={{ listStyle: 'none', width: '100%', marginBottom: '40px' }}>
-                  {plan.perks.map((p, j) => <li key={j} style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Shield size={16} style={{ color: 'var(--primary)' }} /> {p}</li>)}
+                  {plan.perks.map((p, j) => <li key={j} style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px', fontSize: '1.05rem' }}><div style={{ backgroundColor: 'rgba(99, 102, 241, 0.1)', padding: '6px', borderRadius: '50%' }}><Shield size={16} style={{ color: 'var(--primary)' }} /></div> {p}</li>)}
                 </ul>
-                <button className="btn btn-primary" style={{ width: '100%', backgroundColor: i === 0 ? 'var(--primary)' : 'var(--dark)' }}>{t.membership.btnJoin}</button>
+                <button className="btn btn-primary" style={{ width: '100%', padding: '18px', backgroundColor: i === 0 ? 'var(--primary)' : 'var(--dark)' }}>{t.membership.btnJoin}</button>
               </div>
             ))}
           </div>
 
           <div className="donor-box">
-            <h3>{t.membership.donor.title}</h3>
-            <p>{t.membership.donor.desc}</p>
-            <button className="btn" style={{ backgroundColor: 'white', color: 'var(--primary)' }}>
-              <Heart size={18} style={{ marginRight: 8 }} /> {t.membership.donor.btn}
+            <h3 style={{ color: 'white' }}>{t.membership.donor.title}</h3>
+            <p style={{ fontSize: '1.2rem', marginBottom: '32px', opacity: 0.9 }}>{t.membership.donor.desc}</p>
+            <button className="btn" style={{ backgroundColor: 'white', color: 'var(--primary)', padding: '18px 40px', fontSize: '1.1rem' }}>
+              <Heart size={20} style={{ marginRight: 10, color: 'var(--accent)' }} /> {t.membership.donor.btn}
             </button>
           </div>
         </div>

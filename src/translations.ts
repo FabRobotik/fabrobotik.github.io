@@ -13,219 +13,219 @@ export const translations = {
   fr: {
     nav: {
       home: 'Accueil',
-      about: 'À Propos',
-      news: 'Actualités',
-      courses: 'Cours',
+      about: 'Notre Histoire',
+      news: 'La Vie du Club',
+      courses: 'Apprendre',
       workshop: "L'Atelier",
-      reserve: 'Réserver',
-      join: 'Rejoindre',
-      membership: 'Adhérer',
+      reserve: 'Réserver une machine',
+      join: 'Nous rejoindre',
+      membership: 'Devenir membre',
     },
     home: {
-      badge: "Forger l'intelligence de demain",
-      title: "VOTRE ESPACE {span}.",
-      desc: "Apprenez l'informatique, maîtrisez l'IA et construisez vos propres systèmes robotiques au sein de notre communauté de passionnés.",
-      btnCourses: "Découvrir les Cours",
-      btnWorkshop: "Accéder à l'Atelier",
+      badge: "Une communauté de créateurs",
+      title: "VOTRE ATELIER {span}.",
+      desc: "Découvrez l'informatique, maîtrisez l'IA et construisez vos propres robots au sein d'une communauté ouverte à tous, des débutants aux passionnés.",
+      btnCourses: "Nos Ateliers d'Apprentissage",
+      btnWorkshop: "Découvrir l'Atelier",
     },
     about: {
-      title: "NOTRE {span}.",
-      titleSpan: "HISTOIRE",
-      desc: "FabRobotik est né de la conviction que la technologie ne doit pas être une boîte noire. Fondée en 2026, l'association s'est donné pour mission de rendre la robotique de pointe et l'IA accessibles à tous.",
+      title: "L'AVENTURE {span}.",
+      titleSpan: "COMMUNE",
+      desc: "FabRobotik est né de l'idée que la technologie doit être un outil de partage et d'émancipation. Fondée en 2026, notre association ouvre les portes de la robotique et de l'IA à chacun, sans distinction de niveau.",
       history: [
-        { year: '2026', title: 'La Fondation', desc: 'Création de l\'association et mise en place des premiers cours.' },
+        { year: '2026', title: 'Le Premier Pas', desc: 'Rencontre des passionnés et naissance de l\'association à Oullins.' },
       ],
       philosophy: {
-        title: "Notre Philosophie",
-        desc: "Nous croyons en la \"Forge Cognitive\" : l'idée que l'on comprend mieux une technologie en la construisant soi-même. Pas de théorie abstraite sans pratique concrète.",
-        perks: ["Open Source par défaut", "Apprentissage par l'échec", "Collaboration radicale"],
+        title: "Nos Valeurs",
+        desc: "Nous cultivons l'esprit de partage. Ici, on apprend en faisant, on s'entraide et on transforme ensemble des lignes de code en mouvements réels.",
+        perks: ["Savoir libre et partagé", "Le droit à l'erreur", "Entraide intergénérationnelle"],
       },
       team: {
-        title: "L'ÉQUIPE {span}.",
-        titleSpan: "FONDRATRICE",
-        role: "Fondateur & Expert Robotique/IA",
+        title: "CEUX QUI {span}.",
+        titleSpan: "ANIMENT",
+        role: "Animateur & Passionné de Robotique",
       }
     },
     news: {
-      title: "L'ACTUALITÉ {span}.",
-      titleSpan: "ROBOTIK",
+      title: "LA VIE DE {span}.",
+      titleSpan: "L'ASSOCIATION",
       readMore: "Lire la suite",
-      backToList: "Retour aux actualités",
-      noNews: "Aucune actualité pour le moment.",
-      noNewsDesc: "Revenez bientôt pour suivre nos aventures robotiques !",
+      backToList: "Retour aux actus",
+      noNews: "Le club se prépare...",
+      noNewsDesc: "Revenez bientôt pour découvrir nos derniers projets et moments de partage !",
       list: [] as NewsArticle[]
     },
     courses: {
-      title: "FORGEZ VOS {span}.",
-      titleSpan: "COMPÉTENCES",
-      upcoming: "À venir",
+      title: "APPRENDRE {span}.",
+      titleSpan: "ENSEMBLE",
+      upcoming: "Prochainement",
       duration: "{d}h",
-      day: "1 jour",
-      signUp: "S'inscrire",
+      day: "Une journée",
+      signUp: "Je m'inscris",
       list: [
-        { title: "Initiation Robotique", dur: "3" },
-        { title: "IA & Machine Learning", dur: "4" },
-        { title: "Maîtrise LeRobot", dur: "1 day" }
+        { title: "Découverte de la Robotique", dur: "3" },
+        { title: "S'initier à l'IA", dur: "4" },
+        { title: "Construire son premier robot", dur: "1 day" }
       ]
     },
     services: {
-      title: "LA FORGE {span}.",
-      titleSpan: "TECHNIQUE",
-      download: "Catalogue FabRobotik (PDF)",
+      title: "L'ESPACE {span}.",
+      titleSpan: "PARTAGÉ",
+      download: "Guide de l'Atelier (PDF)",
       equipment: {
-        title: "Équipements FabRobotik",
-        desc: "Un arsenal complet pour transformer vos idées en réalité physique et numérique.",
+        title: "Nos outils communs",
+        desc: "Tout ce qu'il faut pour donner vie à vos idées, de l'impression 3D à l'intelligence artificielle.",
         items: [
-          "Parc Impression 3D - FDM & Résine haute définition",
-          "Station Laser - Découpe et gravure 100W",
-          "Unités Robotiques - Bras SO-100 & Plateformes IA"
+          "Espace Impression 3D - Pour créer toutes les formes",
+          "Poste Laser - Pour découper et graver avec précision",
+          "Espace Robotique - Bras SO-100 et stations IA pour explorer le futur"
         ]
       }
     },
     reservation: {
-      title: "RÉSERVER.",
-      desc: "Sélectionnez un créneau pour accéder aux machines de la Forge.",
+      title: "VENIR À L'ATELIER.",
+      desc: "Choisissez un moment pour venir utiliser les outils ou simplement échanger sur vos projets.",
       calendarDays: ['L', 'M', 'M', 'J', 'V', 'S', 'D'],
-      finalize: "Finaliser la réservation",
-      identity: "Identité",
-      resource: "Ressource",
-      date: "Date",
-      namePlaceholder: "Votre nom",
-      datePlaceholder: "Sélectionner un jour sur le calendrier",
-      resources: ["Imprimante 3D", "Découpeuse Laser", "Poste Robotique IA"],
-      confirm: "Confirmer la réservation",
-      alert: "Réservation envoyée à l'équipe FabRobotik !",
+      finalize: "Confirmer ma venue",
+      identity: "Mieux vous connaître",
+      resource: "Espace souhaité",
+      date: "Quand souhaitez-vous venir ?",
+      namePlaceholder: "Votre prénom et nom",
+      datePlaceholder: "Cliquez sur un jour du calendrier",
+      resources: ["Imprimante 3D", "Découpeuse Laser", "Coin Robotique & IA"],
+      confirm: "C'est noté !",
+      alert: "Super ! L'équipe a bien reçu votre demande, on vous attend !",
       month: "Mars 2026"
     },
     membership: {
-      title: "REJOINDRE LA FORGE.",
-      desc: "Devenez membre de FabRobotik et accédez au futur.",
+      title: "FAIRE PARTIE DU CLUB.",
+      desc: "Rejoindre FabRobotik, c'est soutenir un projet local et accéder à un univers de création sans limites.",
       plans: [
-        { title: 'Membre Actif', perks: ['Accès illimité à l\'atelier', 'Accès gratuit à tous les cours'] },
-        { title: 'Étudiant Forge', perks: ['Accès illimité à l\'atelier', 'Accès gratuit à tous les cours'] }
+        { title: 'Membre Passionné', perks: ['Accès libre à l\'atelier', 'Participation gratuite aux cours'] },
+        { title: 'Membre Curieux (Étudiant)', perks: ['Accès libre à l\'atelier', 'Participation gratuite aux cours', 'Tarif réduit'] }
       ],
       perYear: "/an",
-      btnJoin: "Adhérer",
+      btnJoin: "Adhérer maintenant",
       donor: {
-        title: "Propulser FabRobotik",
-        desc: "Vos dons nous permettent d'acquérir les technologies les plus avancées pour la communauté.",
-        btn: "Soutenir par un don"
+        title: "Soutenir notre projet",
+        desc: "Vos dons nous aident à acheter du matériel et à organiser des événements ouverts à tous.",
+        btn: "Faire un don de soutien"
       }
     },
     footer: {
-      desc: "L'alliance de l'intelligence et de la création. Nous formons les architectes du monde numérique de demain.",
-      explorer: "Explorer",
-      contact: "Contact",
-      madeWith: "Fait avec {heart} pour l'innovation."
+      desc: "Une association pour explorer, créer et partager autour de la robotique et de l'intelligence artificielle.",
+      explorer: "Découvrir",
+      contact: "Nous trouver",
+      madeWith: "Créé avec {heart} par la communauté FabRobotik."
     }
   },
   en: {
     nav: {
       home: 'Home',
-      about: 'About',
-      news: 'News',
-      courses: 'Courses',
+      about: 'Our Story',
+      news: 'Club Life',
+      courses: 'Learn',
       workshop: 'Workshop',
-      reserve: 'Reserve',
+      reserve: 'Book a machine',
       join: 'Join Us',
-      membership: 'Join',
+      membership: 'Become a member',
     },
     home: {
-      badge: "Forging tomorrow's intelligence",
-      title: "YOUR {span} SPACE.",
-      desc: "Learn computer science, master AI, and build your own robotic systems within our community of enthusiasts.",
-      btnCourses: "Discover Courses",
-      btnWorkshop: "Access Workshop",
+      badge: "A community of creators",
+      title: "YOUR {span} WORKSHOP.",
+      desc: "Discover computer science, master AI, and build your own robots within a community open to everyone, from beginners to enthusiasts.",
+      btnCourses: "Our Learning Workshops",
+      btnWorkshop: "Explore the Workshop",
     },
     about: {
-      title: "OUR {span}.",
-      titleSpan: "STORY",
-      desc: "FabRobotik was born from the conviction that technology should not be a black box. Founded in 2026, the association's mission is to make advanced robotics and AI accessible to all.",
+      title: "A SHARED {span}.",
+      titleSpan: "ADVENTURE",
+      desc: "FabRobotik was born from the idea that technology should be a tool for sharing and empowerment. Founded in 2026, our association opens the doors of robotics and AI to everyone, regardless of their level.",
       history: [
-        { year: '2026', title: 'The Foundation', desc: 'Creation of the association and launch of the first courses.' },
+        { year: '2026', title: 'The First Step', desc: 'Enthusiasts meet and the association is born in Oullins.' },
       ],
       philosophy: {
-        title: "Our Philosophy",
-        desc: "We believe in the \"Cognitive Forge\": the idea that technology is best understood by building it yourself. No abstract theory without concrete practice.",
-        perks: ["Open Source by default", "Learning through failure", "Radical collaboration"],
+        title: "Our Values",
+        desc: "We cultivate the spirit of sharing. Here, we learn by doing, we help each other, and together we transform lines of code into real movements.",
+        perks: ["Free and shared knowledge", "The right to make mistakes", "Intergenerational support"],
       },
       team: {
-        title: "THE {span} TEAM.",
-        titleSpan: "FOUNDING",
-        role: "Founder & Robotics/AI Expert",
+        title: "THOSE WHO {span}.",
+        titleSpan: "ANIMATE",
+        role: "Host & Robotics Enthusiast",
       }
     },
     news: {
-      title: "ROBOTIK {span}.",
-      titleSpan: "NEWS",
+      title: "LIFE AT THE {span}.",
+      titleSpan: "ASSOCIATION",
       readMore: "Read more",
       backToList: "Back to news",
-      noNews: "No news at the moment.",
-      noNewsDesc: "Check back soon to follow our robotic adventures!",
+      noNews: "The club is getting ready...",
+      noNewsDesc: "Check back soon to discover our latest projects and shared moments!",
       list: [] as NewsArticle[]
     },
     courses: {
-      title: "FORGE YOUR {span}.",
-      titleSpan: "SKILLS",
+      title: "LEARNING {span}.",
+      titleSpan: "TOGETHER",
       upcoming: "Coming soon",
       duration: "{d}h",
-      day: "1 day",
-      signUp: "Sign Up",
+      day: "One day",
+      signUp: "Sign me up",
       list: [
-        { title: "Robotics Initiation", dur: "3" },
-        { title: "AI & Machine Learning", dur: "4" },
-        { title: "Mastering LeRobot", dur: "1 day" }
+        { title: "Robotics Discovery", dur: "3" },
+        { title: "Introduction to AI", dur: "4" },
+        { title: "Build your first robot", dur: "1 day" }
       ]
     },
     services: {
-      title: "THE TECHNICAL {span}.",
-      titleSpan: "FORGE",
-      download: "FabRobotik Catalog (PDF)",
+      title: "THE SHARED {span}.",
+      titleSpan: "SPACE",
+      download: "Workshop Guide (PDF)",
       equipment: {
-        title: "FabRobotik Equipment",
-        desc: "A full arsenal to transform your ideas into physical and digital reality.",
+        title: "Our shared tools",
+        desc: "Everything you need to bring your ideas to life, from 3D printing to artificial intelligence.",
         items: [
-          "3D Printing Lab - FDM & High-definition Resin",
-          "Laser Station - 100W Cutting and Engraving",
-          "Robotic Units - SO-100 Arms & AI Platforms"
+          "3D Printing Space - To create any shape",
+          "Laser Station - To cut and engrave with precision",
+          "Robotics Space - SO-100 arms and AI stations to explore the future"
         ]
       }
     },
     reservation: {
-      title: "RESERVE.",
-      desc: "Select a slot to access the Forge's machines.",
+      title: "VISIT THE WORKSHOP.",
+      desc: "Choose a time to use the tools or simply chat about your projects.",
       calendarDays: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-      finalize: "Finalize reservation",
-      identity: "Identity",
-      resource: "Resource",
-      date: "Date",
-      namePlaceholder: "Your name",
-      datePlaceholder: "Select a day on the calendar",
-      resources: ["3D Printer", "Laser Cutter", "AI Robotics Station"],
-      confirm: "Confirm reservation",
-      alert: "Reservation sent to the FabRobotik team!",
+      finalize: "Confirm my visit",
+      identity: "Get to know you",
+      resource: "Desired space",
+      date: "When would you like to come?",
+      namePlaceholder: "Your first and last name",
+      datePlaceholder: "Click on a day on the calendar",
+      resources: ["3D Printer", "Laser Cutter", "Robotics & AI Corner"],
+      confirm: "Got it!",
+      alert: "Great! The team has received your request, we are waiting for you!",
       month: "March 2026"
     },
     membership: {
-      title: "JOIN THE FORGE.",
-      desc: "Become a member of FabRobotik and access the future.",
+      title: "BE PART OF THE CLUB.",
+      desc: "Joining FabRobotik means supporting a local project and accessing a world of limitless creation.",
       plans: [
-        { title: 'Active Member', perks: ['Unlimited workshop access', 'Free access to all courses'] },
-        { title: 'Forge Student', perks: ['Unlimited workshop access', 'Free access to all courses'] }
+        { title: 'Passionate Member', perks: ['Free workshop access', 'Free participation in courses', 'Voting rights'] },
+        { title: 'Curious Member (Student)', perks: ['Free workshop access', 'Free participation in courses', 'Reduced rate'] }
       ],
       perYear: "/year",
-      btnJoin: "Join",
+      btnJoin: "Join now",
       donor: {
-        title: "Power FabRobotik",
-        desc: "Your donations allow us to acquire the most advanced technologies for the community.",
-        btn: "Support with a donation"
+        title: "Support our project",
+        desc: "Your donations help us buy equipment and organize events open to all.",
+        btn: "Make a support donation"
       }
     },
     footer: {
-      desc: "The alliance of intelligence and creation. We train the architects of tomorrow's digital world.",
-      explorer: "Explore",
-      contact: "Contact",
-      madeWith: "Made with {heart} for innovation."
+      desc: "An association to explore, create, and share around robotics and artificial intelligence.",
+      explorer: "Discover",
+      contact: "Find us",
+      madeWith: "Created with {heart} by the FabRobotik community."
     }
   }
 };
