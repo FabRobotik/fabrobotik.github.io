@@ -167,8 +167,7 @@ const About = () => (
           <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '32px' }}>NOTRE <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>HISTOIRE</span>.</h2>
           <p style={{ fontSize: '1.25rem', color: 'var(--slate-600)', lineHeight: '1.8' }}>
             FabRobotik est né de la conviction que la technologie ne doit pas être une boîte noire. 
-            Fondée en 2024 par un groupe d'ingénieurs et de passionnés, l'association s'est donné pour mission 
-            de rendre la robotique de pointe et l'IA accessibles à tous.
+            Fondée en 2026, l'association s'est donné pour mission de rendre la robotique de pointe et l'IA accessibles à tous.
           </p>
         </div>
 
@@ -204,9 +203,7 @@ const About = () => (
         <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '60px', textAlign: 'center' }}>L'ÉQUIPE <span style={{ color: 'var(--primary)' }}>FONDRATRICE</span>.</h2>
         <div className="grid md-cols-3 gap-8">
           {[
-            { name: 'Alexandre Forge', role: 'Fondateur & Expert Robotique', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Sarah Circuit', role: 'Responsable FabLab', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200' },
-            { name: 'Marc Neuron', role: 'Lead IA & Deep Learning', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200' }
+            { name: 'Alexandre Chapin', role: 'Fondateur & Expert Robotique/IA', img: '' },
           ].map((member, i) => (
             <div key={i} className="card member-card">
               <img src={member.img} alt={member.name} className="member-image" />
@@ -232,9 +229,9 @@ const Courses = () => {
           <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '80px' }}>FORGEZ VOS <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>COMPÉTENCES</span>.</h2>
           <div className="grid md-cols-3 gap-8">
             {[
-              { title: "Initiation Robotique", price: "45€", dur: "3h", img: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80&w=500" },
-              { title: "IA & Machine Learning", price: "75€", dur: "4h", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=500" },
-              { title: "Maîtrise LeRobot", price: "120€", dur: "1 jour", img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=500" }
+              { title: "Initiation Robotique", price: "TODO€", dur: "3h", img: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80&w=500" },
+              { title: "IA & Machine Learning", price: "TODO€", dur: "4h", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=500" },
+              { title: "Maîtrise LeRobot", price: "TODO€", dur: "1 jour", img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=500" }
             ].map((c, i) => (
               <div key={i} className="card course-card" style={{ padding: 0 }}>
                 <img src={c.img} alt={c.title} className="course-image" />
@@ -360,8 +357,8 @@ const Membership = () => (
         
         <div className="grid md-cols-2 gap-8" style={{ maxWidth: '900px', marginInline: 'auto' }}>
           {[
-            { title: 'Membre Actif', price: '30€', color: 'primary', perks: ['Accès illimité à l\'atelier', 'Priorité sur les cours IA'] },
-            { title: 'Étudiant Forge', price: '15€', color: 'accent', perks: ['Accès illimité à l\'atelier', 'Tarif réduit composants'] }
+            { title: 'Membre Actif', price: '40€/an', color: 'primary', perks: ['Accès illimité à l\'atelier', 'Priorité sur les cours IA'] },
+            { title: 'Étudiant Forge', price: '20€/an', color: 'accent', perks: ['Accès illimité à l\'atelier', 'Tarif réduit composants'] }
           ].map((plan, i) => (
             <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: i === 0 ? '2px solid var(--primary)' : '1px solid var(--slate-200)' }}>
               <h4 style={{ fontSize: '1.5rem', marginBottom: '24px' }}>{plan.title}</h4>
