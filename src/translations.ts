@@ -42,6 +42,8 @@ export const translations = {
       titleSpan: "ROBOTIK",
       readMore: "Lire la suite",
       backToList: "Retour aux actualités",
+      noNews: "Aucune actualité pour le moment.",
+      noNewsDesc: "Revenez bientôt pour suivre nos aventures robotiques !",
       list: [
         //{
         //  id: 1,
@@ -158,6 +160,8 @@ export const translations = {
       titleSpan: "NEWS",
       readMore: "Read more",
       backToList: "Back to news",
+      noNews: "No news at the moment.",
+      noNewsDesc: "Check back soon to follow our robotic adventures!",
       list: [
         //{
         //  id: 1,

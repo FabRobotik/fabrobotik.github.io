@@ -329,25 +329,36 @@ const News = () => {
           <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '80px' }}>
             {t.news.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.news.titleSpan}</span>{t.news.title.split('{span}')[1]}
           </h2>
-          <div className="grid md-cols-2 gap-8">
-            {t.news.list.map((article) => (
-              <div key={article.id} className="card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                <img 
-                  src={article.image} 
-                  alt={article.title} 
-                  style={{ width: '100%', height: '250px', objectFit: 'cover' }} 
-                />
-                <div style={{ padding: '32px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ color: 'var(--slate-400)', fontSize: '0.875rem', fontWeight: 700 }}>{article.date}</span>
-                  <h3 style={{ margin: '16px 0', fontSize: '1.75rem' }}>{article.title}</h3>
-                  <p style={{ color: 'var(--slate-600)', marginBottom: '24px', flexGrow: 1 }}>{article.excerpt}</p>
-                  <Link to={`/news/${article.id}`} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
-                    {t.news.readMore} <ChevronRight size={18} />
-                  </Link>
+          
+          {t.news.list.length > 0 ? (
+            <div className="grid md-cols-2 gap-8">
+              {t.news.list.map((article) => (
+                <div key={article.id} className="card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                  <img 
+                    src={article.image} 
+                    alt={article.title} 
+                    style={{ width: '100%', height: '250px', objectFit: 'cover' }} 
+                  />
+                  <div style={{ padding: '32px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ color: 'var(--slate-400)', fontSize: '0.875rem', fontWeight: 700 }}>{article.date}</span>
+                    <h3 style={{ margin: '16px 0', fontSize: '1.75rem' }}>{article.title}</h3>
+                    <p style={{ color: 'var(--slate-600)', marginBottom: '24px', flexGrow: 1 }}>{article.excerpt}</p>
+                    <Link to={`/news/${article.id}`} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
+                      {t.news.readMore} <ChevronRight size={18} />
+                    </Link>
+                  </div>
                 </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '80px 0', backgroundColor: 'var(--slate-50)', borderRadius: '32px', border: '2px dashed var(--slate-200)' }}>
+              <div style={{ backgroundColor: 'white', width: '80px', height: '80px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.05)' }}>
+                <BrainCircuit size={40} style={{ color: 'var(--primary)' }} />
               </div>
-            ))}
-          </div>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>{t.news.noNews}</h3>
+              <p style={{ color: 'var(--slate-500)', maxWidth: '400px', margin: '0 auto' }}>{t.news.noNewsDesc}</p>
+            </div>
+          )}
         </div>
       </section>
     </PageTransition>
