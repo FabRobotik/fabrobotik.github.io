@@ -174,9 +174,7 @@ const About = () => (
         <div className="grid md-cols-2 gap-20" style={{ marginBottom: '120px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
-              { year: '2024', title: 'La Fondation', desc: 'Ouverture de notre premier atelier avec 2 imprimantes 3D et une ambition immense.' },
-              { year: '2025', title: 'Expansion IA', desc: 'Intégration des premières stations de calcul et lancement des cours sur LeRobot.' },
-              { year: '2026', title: 'FabRobotik Aujourd\'hui', desc: 'Une communauté de 200 membres et un parc machine de classe industrielle.' }
+              { year: '2026', title: 'La Fondation', desc: 'Création de l\'association et mise en place des premiers cours.' },
             ].map((item, i) => (
               <div key={i} className="history-item">
                 <span style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '1.25rem' }}>{item.year}</span>
@@ -203,7 +201,7 @@ const About = () => (
         <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '60px', textAlign: 'center' }}>L'ÉQUIPE <span style={{ color: 'var(--primary)' }}>FONDRATRICE</span>.</h2>
         <div className="grid md-cols-3 gap-8">
           {[
-            { name: 'Alexandre Chapin', role: 'Fondateur & Expert Robotique/IA', img: '' },
+            { name: 'Alexandre Chapin', role: 'Fondateur & Expert Robotique/IA', img: 'alex.jpeg' },
           ].map((member, i) => (
             <div key={i} className="card member-card">
               <img src={member.img} alt={member.name} className="member-image" />
@@ -229,9 +227,9 @@ const Courses = () => {
           <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '80px' }}>FORGEZ VOS <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>COMPÉTENCES</span>.</h2>
           <div className="grid md-cols-3 gap-8">
             {[
-              { title: "Initiation Robotique", price: "TODO€", dur: "3h", img: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80&w=500" },
-              { title: "IA & Machine Learning", price: "TODO€", dur: "4h", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=500" },
-              { title: "Maîtrise LeRobot", price: "TODO€", dur: "1 jour", img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=500" }
+              { title: "Initiation Robotique", price: "A venir", dur: "3h", img: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&q=80&w=500" },
+              { title: "IA & Machine Learning", price: "A venir", dur: "4h", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=500" },
+              { title: "Maîtrise LeRobot", price: "A venir", dur: "1 jour", img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=500" }
             ].map((c, i) => (
               <div key={i} className="card course-card" style={{ padding: 0 }}>
                 <img src={c.img} alt={c.title} className="course-image" />
@@ -239,7 +237,6 @@ const Courses = () => {
                   <h3>{c.title}</h3>
                   <div style={{ display: 'flex', gap: '12px', margin: '16px 0', color: 'var(--slate-500)', fontSize: '0.875rem' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Clock size={14} /> {c.dur}</span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><CheckCircle2 size={14} /> Certifiant</span>
                   </div>
                   <div className="course-price">{c.price}</div>
                   <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => handleBooking(c.title)}>S'inscrire</button>
@@ -272,7 +269,6 @@ const Services = () => (
               <li style={{ marginBottom: '16px' }}><strong>Parc Impression 3D</strong> - FDM & Résine haute définition</li>
               <li style={{ marginBottom: '16px' }}><strong>Station Laser</strong> - Découpe et gravure 100W</li>
               <li style={{ marginBottom: '16px' }}><strong>Unités Robotiques</strong> - Bras SO-100 & Plateformes IA</li>
-              <li><strong>Calcul Haute Performance</strong> - GPUs dédiés au Deep Learning</li>
             </ul>
           </div>
         </div>
@@ -357,8 +353,8 @@ const Membership = () => (
         
         <div className="grid md-cols-2 gap-8" style={{ maxWidth: '900px', marginInline: 'auto' }}>
           {[
-            { title: 'Membre Actif', price: '40€/an', color: 'primary', perks: ['Accès illimité à l\'atelier', 'Priorité sur les cours IA'] },
-            { title: 'Étudiant Forge', price: '20€/an', color: 'accent', perks: ['Accès illimité à l\'atelier', 'Tarif réduit composants'] }
+            { title: 'Membre Actif', price: '40€', color: 'primary', perks: ['Accès illimité à l\'atelier', 'Accès gratuit à tous les cours'] },
+            { title: 'Étudiant Forge', price: '20€', color: 'accent', perks: ['Accès illimité à l\'atelier', 'Accès gratuit à tous les cours'] }
           ].map((plan, i) => (
             <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: i === 0 ? '2px solid var(--primary)' : '1px solid var(--slate-200)' }}>
               <h4 style={{ fontSize: '1.5rem', marginBottom: '24px' }}>{plan.title}</h4>
