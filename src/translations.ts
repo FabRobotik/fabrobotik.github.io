@@ -5,6 +5,7 @@ export const translations = {
     nav: {
       home: 'Accueil',
       about: 'À Propos',
+      news: 'Actualités',
       courses: 'Cours',
       workshop: "L'Atelier",
       reserve: 'Réserver',
@@ -28,13 +29,29 @@ export const translations = {
       philosophy: {
         title: "Notre Philosophie",
         desc: "Nous croyons en la \"Forge Cognitive\" : l'idée que l'on comprend mieux une technologie en la construisant soi-même. Pas de théorie abstraite sans pratique concrète.",
-        perks: ["Open Source par défaut", "Apprentissage par l'échec", "Collaboration active"],
+        perks: ["Open Source par défaut", "Apprentissage par l'échec", "Collaboration radicale"],
       },
       team: {
         title: "L'ÉQUIPE {span}.",
         titleSpan: "FONDRATRICE",
         role: "Fondateur & Expert Robotique/IA",
       }
+    },
+    news: {
+      title: "L'ACTUALITÉ {span}.",
+      titleSpan: "ROBOTIK",
+      readMore: "Lire la suite",
+      backToList: "Retour aux actualités",
+      list: [
+        //{
+        //  id: 1,
+        //  date: "March 10, 2026",
+        //  title: "Launch of the Forge",
+        //  excerpt: "FabRobotik officially opens its doors! Come and discover our facilities and projects.",
+        //  content: "It is with great pride that we announce the official opening of FabRobotik. Our workshop is now equipped to welcome you and support you in your most ambitious projects.",
+        //  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+        //},
+      ]
     },
     courses: {
       title: "FORGEZ VOS {span}.",
@@ -104,6 +121,7 @@ export const translations = {
     nav: {
       home: 'Home',
       about: 'About',
+      news: 'News',
       courses: 'Courses',
       workshop: 'Workshop',
       reserve: 'Reserve',
@@ -127,13 +145,29 @@ export const translations = {
       philosophy: {
         title: "Our Philosophy",
         desc: "We believe in the \"Cognitive Forge\": the idea that technology is best understood by building it yourself. No abstract theory without concrete practice.",
-        perks: ["Open Source by default", "Learning through failure", "Active collaboration"],
+        perks: ["Open Source by default", "Learning through failure", "Radical collaboration"],
       },
       team: {
         title: "THE {span} TEAM.",
         titleSpan: "FOUNDING",
         role: "Founder & Robotics/AI Expert",
       }
+    },
+    news: {
+      title: "ROBOTIK {span}.",
+      titleSpan: "NEWS",
+      readMore: "Read more",
+      backToList: "Back to news",
+      list: [
+        //{
+        //  id: 1,
+        //  date: "March 10, 2026",
+        //  title: "Launch of the Forge",
+        //  excerpt: "FabRobotik officially opens its doors! Come and discover our facilities and projects.",
+        //  content: "It is with great pride that we announce the official opening of FabRobotik. Our workshop is now equipped to welcome you and support you in your most ambitious projects.",
+        //  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+        //},
+      ]
     },
     courses: {
       title: "FORGE YOUR {span}.",

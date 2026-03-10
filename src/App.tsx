@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams, useNavigate } from 'react-router-dom';
 import { 
   Printer, 
   MapPin, 
@@ -21,6 +21,8 @@ import {
   Linkedin,
   Target,
   Github,
+  Globe,
+  ArrowLeft,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { translations, type Language } from './translations';
@@ -56,6 +58,7 @@ const Navbar = () => {
   const links = [
     { name: t.nav.home, path: '/' },
     { name: t.nav.about, path: '/about' },
+    { name: t.nav.news, path: '/news' },
     { name: t.nav.courses, path: '/cours' },
     { name: t.nav.workshop, path: '/services' },
     { name: t.nav.reserve, path: '/reservation' },
@@ -158,6 +161,7 @@ const Footer = () => {
           <h4 className="footer-title">{t.footer.explorer}</h4>
           <Link to="/" className="footer-link">{t.nav.home}</Link>
           <Link to="/about" className="footer-link">{t.nav.about}</Link>
+          <Link to="/news" className="footer-link">{t.nav.news}</Link>
           <Link to="/cours" className="footer-link">{t.nav.courses}</Link>
           <Link to="/services" className="footer-link">{t.nav.workshop}</Link>
         </div>
@@ -271,6 +275,76 @@ const About = () => {
                 <img src={member.img} alt={member.name} className="member-image" />
                 <h4>{member.name}</h4>
                 <p style={{ color: 'var(--primary)', fontSize: '0.875rem', fontWeight: 700, marginTop: '4px' }}>{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </PageTransition>
+  );
+};
+
+const News = () => {
+  const { t } = useTranslation();
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  if (id) {
+    const article = t.news.list.find(a => a.id === parseInt(id));
+    if (!article) return <div className="section container">Article not found</div>;
+
+    return (
+      <PageTransition>
+        <section className="section" style={{ paddingTop: '180px' }}>
+          <div className="container">
+            <button 
+              onClick={() => navigate('/news')} 
+              className="btn btn-outline" 
+              style={{ marginBottom: '40px' }}
+            >
+              <ArrowLeft size={18} /> {t.news.backToList}
+            </button>
+            <div style={{ maxWidth: '900px', marginInline: 'auto' }}>
+              <img 
+                src={article.image} 
+                alt={article.title} 
+                style={{ width: '100%', borderRadius: '32px', marginBottom: '48px', height: '400px', objectFit: 'cover' }} 
+              />
+              <span style={{ color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{article.date}</span>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', margin: '24px 0' }}>{article.title}</h1>
+              <div style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--slate-600)' }}>
+                {article.content}
+              </div>
+            </div>
+          </div>
+        </section>
+      </PageTransition>
+    );
+  }
+
+  return (
+    <PageTransition>
+      <section className="section" style={{ paddingTop: '180px' }}>
+        <div className="container">
+          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '80px' }}>
+            {t.news.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.news.titleSpan}</span>{t.news.title.split('{span}')[1]}
+          </h2>
+          <div className="grid md-cols-2 gap-8">
+            {t.news.list.map((article) => (
+              <div key={article.id} className="card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                <img 
+                  src={article.image} 
+                  alt={article.title} 
+                  style={{ width: '100%', height: '250px', objectFit: 'cover' }} 
+                />
+                <div style={{ padding: '32px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ color: 'var(--slate-400)', fontSize: '0.875rem', fontWeight: 700 }}>{article.date}</span>
+                  <h3 style={{ margin: '16px 0', fontSize: '1.75rem' }}>{article.title}</h3>
+                  <p style={{ color: 'var(--slate-600)', marginBottom: '24px', flexGrow: 1 }}>{article.excerpt}</p>
+                  <Link to={`/news/${article.id}`} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
+                    {t.news.readMore} <ChevronRight size={18} />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -527,6 +601,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/news" element={<News />} />
+                <Route path="/news/:id" element={<News />} />
                 <Route path="/cours" element={<Courses />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/reservation" element={<Reservation />} />
