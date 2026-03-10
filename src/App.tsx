@@ -97,7 +97,7 @@ const Footer = () => (
           <a href="#" className="social-icon"><Instagram size={20} /></a>
           <a href="#" className="social-icon"><Twitter size={20} /></a>
           <a href="#" className="social-icon"><Linkedin size={20} /></a>
-          <a href="https://github.com/fabrobotik" className="social-icon"><Github size={20} /></a>
+          <a href="https://github.com/FabRobotik" className="social-icon"><Github size={20} /></a>
         </div>
       </div>
       <div>
