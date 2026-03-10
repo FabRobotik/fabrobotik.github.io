@@ -1,5 +1,14 @@
 export type Language = 'fr' | 'en';
 
+export interface NewsArticle {
+  id: number;
+  date: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  image: string;
+}
+
 export const translations = {
   fr: {
     nav: {
@@ -44,16 +53,7 @@ export const translations = {
       backToList: "Retour aux actualités",
       noNews: "Aucune actualité pour le moment.",
       noNewsDesc: "Revenez bientôt pour suivre nos aventures robotiques !",
-      list: [
-        //{
-        //  id: 1,
-        //  date: "March 10, 2026",
-        //  title: "Launch of the Forge",
-        //  excerpt: "FabRobotik officially opens its doors! Come and discover our facilities and projects.",
-        //  content: "It is with great pride that we announce the official opening of FabRobotik. Our workshop is now equipped to welcome you and support you in your most ambitious projects.",
-        //  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
-        //},
-      ]
+      list: [] as NewsArticle[]
     },
     courses: {
       title: "FORGEZ VOS {span}.",
@@ -162,16 +162,7 @@ export const translations = {
       backToList: "Back to news",
       noNews: "No news at the moment.",
       noNewsDesc: "Check back soon to follow our robotic adventures!",
-      list: [
-        //{
-        //  id: 1,
-        //  date: "March 10, 2026",
-        //  title: "Launch of the Forge",
-        //  excerpt: "FabRobotik officially opens its doors! Come and discover our facilities and projects.",
-        //  content: "It is with great pride that we announce the official opening of FabRobotik. Our workshop is now equipped to welcome you and support you in your most ambitious projects.",
-        //  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
-        //},
-      ]
+      list: [] as NewsArticle[]
     },
     courses: {
       title: "FORGE YOUR {span}.",
