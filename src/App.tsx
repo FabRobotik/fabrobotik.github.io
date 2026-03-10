@@ -21,7 +21,6 @@ import {
   Linkedin,
   Target,
   Github,
-  Globe,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { translations, type Language } from './translations';
