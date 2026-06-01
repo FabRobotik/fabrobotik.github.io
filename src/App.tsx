@@ -64,8 +64,6 @@ const Navbar = () => {
   const links = [
     { name: t.nav.home, path: '/' },
     { name: t.nav.courses, path: '/cours' },
-    { name: t.nav.workshop, path: '/services' },
-    { name: t.nav.reserve, path: '/reservation' },
     { name: t.nav.join, path: '/membership' },
   ];
 
@@ -144,7 +142,6 @@ const Footer = () => {
           <Link to="/about" className="footer-link">{t.nav.about}</Link>
           <Link to="/news" className="footer-link">{t.nav.news}</Link>
           <Link to="/cours" className="footer-link">{t.nav.courses}</Link>
-          <Link to="/services" className="footer-link">{t.nav.workshop}</Link>
         </div>
         <div>
           <h4 className="footer-title">{t.footer.contact}</h4>
@@ -188,7 +185,6 @@ const Home = () => {
             </p>
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
               <Link to="/cours" className="btn btn-primary">{t.home.btnCourses}</Link>
-              <Link to="/reservation" className="btn btn-outline">{t.home.btnWorkshop} <Sparkles size={18} /></Link>
             </div>
           </div>
           <div className="img-overlap">
@@ -256,7 +252,8 @@ const About = () => {
           </h2>
           <div className="grid md-cols-3 gap-8">
             {[
-              { name: 'Alexandre Chapin', role: t.about.team.role, img: 'alex.jpeg' },
+              { name: 'Alexandre Chapin', role: "Président et Animateur d'atelier", img: 'alex.jpeg' },
+              { name: 'Marion Blanchet', role: "Trésorière", img: 'marion.jpg' },
             ].map((member, i) => (
               <div key={i} className="card member-card">
                 <img src={member.img} alt={member.name} className="member-image" />
@@ -369,9 +366,9 @@ const Courses = () => {
             {t.courses.list.map((c, i) => (
               <div key={i} className="card course-card" style={{ padding: 0 }}>
                 <img src={[
-                  "duck_hf.png",
-                  "ia.jpg",
-                  "so100.jfif"
+                  'duck_hf.png',
+                  'ia.jpg',
+                  'so100.jfif'
                 ][i]} alt={c.title} className="course-image" />
                 <div style={{ padding: '32px' }}>
                   <h3 style={{ fontSize: '1.5rem' }}>{c.title}</h3>
@@ -469,7 +466,7 @@ const Reservation = () => {
     formData.append('date_de_reservation', `${selectedDate} ${t.reservation.month}`);
 
     // URL Formspree (à configurer dans GitHub Secrets / .env)
-    const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/votre_id";
+    const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/votre_id';
 
     try {
       const response = await fetch(FORMSPREE_URL, {

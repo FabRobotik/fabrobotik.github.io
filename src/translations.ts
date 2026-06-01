@@ -23,7 +23,7 @@ export const translations = {
     },
     home: {
       badge: "Une communauté de créateurs",
-      title: "VOTRE ATELIER {span}.",
+      title: "VOTRE CLUB {span}.",
       desc: "Découvrez l'informatique, maîtrisez l'IA et construisez vos propres robots au sein d'une communauté ouverte à tous, des débutants aux passionnés.",
       btnCourses: "Nos Ateliers d'Apprentissage",
       btnWorkshop: "Découvrir l'Atelier",
@@ -31,9 +31,9 @@ export const translations = {
     about: {
       title: "L'AVENTURE {span}.",
       titleSpan: "COMMUNE",
-      desc: "FabRobotik est né de l'idée que la technologie doit être un outil de partage et d'émancipation. Fondée en 2026, notre association ouvre les portes de la robotique et de l'IA à chacun, sans distinction de niveau.",
+      desc: "FabRobotik est né de l'idée que la technologie doit être un outil de partage et d'émancipation. Fondée en Mai 2026, notre association ouvre les portes de la robotique et de l'IA à chacun, sans distinction de niveau.",
       history: [
-        { year: '2026', title: 'Le Premier Pas', desc: 'Rencontre des passionnés et naissance de l\'association à Oullins.' },
+        { year: 'Mai 2026', title: 'Le Premier Pas', desc: 'Rencontre des passionnés et naissance de l\'association à Oullins.' },
       ],
       philosophy: {
         title: "Nos Valeurs",
@@ -42,8 +42,7 @@ export const translations = {
       },
       team: {
         title: "CEUX QUI {span}.",
-        titleSpan: "ANIMENT",
-        role: "Animateur & Passionné de Robotique",
+        titleSpan: "ANIMENT"
       }
     },
     news: {
@@ -101,8 +100,8 @@ export const translations = {
       title: "FAIRE PARTIE DU CLUB.",
       desc: "Rejoindre FabRobotik, c'est soutenir un projet local et accéder à un univers de création sans limites.",
       plans: [
-        { title: 'Membre Passionné', perks: ['Accès libre à l\'atelier', 'Participation gratuite aux cours'] },
-        { title: 'Membre Curieux (Étudiant)', perks: ['Accès libre à l\'atelier', 'Participation gratuite aux cours', 'Tarif réduit'] }
+        { title: 'Membre Passionné', perks: ['Participation gratuite aux cours'] },
+        { title: 'Membre Curieux (Étudiant)', perks: ['Participation gratuite aux cours', 'Tarif réduit'] }
       ],
       perYear: "/an",
       btnJoin: "Adhérer maintenant",
@@ -132,7 +131,7 @@ export const translations = {
     },
     home: {
       badge: "A community of creators",
-      title: "YOUR {span} WORKSHOP.",
+      title: "YOUR {span} CLUB.",
       desc: "Discover computer science, master AI, and build your own robots within a community open to everyone, from beginners to enthusiasts.",
       btnCourses: "Our Learning Workshops",
       btnWorkshop: "Explore the Workshop",
@@ -140,9 +139,9 @@ export const translations = {
     about: {
       title: "A SHARED {span}.",
       titleSpan: "ADVENTURE",
-      desc: "FabRobotik was born from the idea that technology should be a tool for sharing and empowerment. Founded in 2026, our association opens the doors of robotics and AI to everyone, regardless of their level.",
+      desc: "FabRobotik was born from the idea that technology should be a tool for sharing and empowerment. Founded in May 2026, our association opens the doors of robotics and AI to everyone, regardless of their level.",
       history: [
-        { year: '2026', title: 'The First Step', desc: 'Enthusiasts meet and the association is born in Oullins.' },
+        { year: 'May 2026', title: 'The First Step', desc: 'Enthusiasts meet and the association is born in Oullins.' },
       ],
       philosophy: {
         title: "Our Values",
@@ -210,8 +209,8 @@ export const translations = {
       title: "BE PART OF THE CLUB.",
       desc: "Joining FabRobotik means supporting a local project and accessing a world of limitless creation.",
       plans: [
-        { title: 'Passionate Member', perks: ['Free workshop access', 'Free participation in courses', 'Voting rights'] },
-        { title: 'Curious Member (Student)', perks: ['Free workshop access', 'Free participation in courses', 'Reduced rate'] }
+        { title: 'Passionate Member', perks: ['Free participation in courses', 'Voting rights'] },
+        { title: 'Curious Member (Student)', perks: ['Free participation in courses', 'Reduced rate'] }
       ],
       perYear: "/year",
       btnJoin: "Join now",
