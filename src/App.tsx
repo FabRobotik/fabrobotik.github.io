@@ -23,7 +23,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { translations, type Language } from './translations';
+import { translations, type Language, type CourseItem } from './translations';
 
 // --- Context ---
 
@@ -61,24 +61,43 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const links = [
     { name: t.nav.home, path: '/' },
+    { name: t.nav.news, path: '/news' },
     { name: t.nav.courses, path: '/cours' },
-    { name: t.nav.join, path: '/membership' },
+    { name: t.nav.join, path: '/interet' },
   ];
 
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
       <div className="container nav-container">
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '16px' }} onClick={() => setIsOpen(false)}>
           <img src="/logo_medium.png" alt="FabRobotik Logo" style={{ height: '50px', width: 'auto' }} />
         </Link>
-        
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="nav-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsOpen(false)}
+            />
+          )}
+        </AnimatePresence>
+
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
           {links.map((link) => (
-            <Link 
+            <Link
               key={link.path}
-              to={link.path} 
+              to={link.path}
               className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
               onClick={() => setIsOpen(false)}
             >
@@ -89,26 +108,28 @@ const Navbar = () => {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'var(--slate-100)', padding: '4px', borderRadius: '12px' }}>
-            <button 
-              className={`btn-lang ${lang === 'fr' ? 'active' : ''}`} 
+            <button
+              className={`btn-lang ${lang === 'fr' ? 'active' : ''}`}
               onClick={() => setLang('fr')}
+              aria-label="Français"
               style={{ fontSize: '1.4rem', padding: '4px 8px', borderRadius: '8px', background: lang === 'fr' ? 'var(--white)' : 'transparent', boxShadow: lang === 'fr' ? 'var(--shadow-sm)' : 'none', transition: 'var(--transition)' }}
             >
               🇫🇷
             </button>
-            <button 
-              className={`btn-lang ${lang === 'en' ? 'active' : ''}`} 
+            <button
+              className={`btn-lang ${lang === 'en' ? 'active' : ''}`}
               onClick={() => setLang('en')}
+              aria-label="English"
               style={{ fontSize: '1.4rem', padding: '4px 8px', borderRadius: '8px', background: lang === 'en' ? 'var(--white)' : 'transparent', boxShadow: lang === 'en' ? 'var(--shadow-sm)' : 'none', transition: 'var(--transition)' }}
             >
               🇬🇧
             </button>
           </div>
-          
-          <Link to="/membership" className="btn btn-primary hidden-mobile">
+
+          <Link to="/membership" className="btn btn-primary hidden-mobile" aria-label={t.nav.membership}>
             <Heart size={18} />
           </Link>
-          <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
+          <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? 'Close menu' : 'Open menu'}>
             {isOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
@@ -255,11 +276,19 @@ const About = () => {
               { name: 'Alexandre Chapin', role: "Président et Animateur d'atelier", img: 'alex.jpeg' },
               { name: 'Marion Blanchet', role: "Trésorière", img: 'marion.jpg' },
             ].map((member, i) => (
-              <div key={i} className="card member-card">
+              <motion.div
+                key={i}
+                className="card member-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -10 }}
+              >
                 <img src={member.img} alt={member.name} className="member-image" />
                 <h4 style={{ fontSize: '1.5rem', color: 'var(--dark)' }}>{member.name}</h4>
                 <p style={{ color: 'var(--primary)', fontSize: '1rem', fontWeight: 700, marginTop: '8px' }}>{member.role}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -349,39 +378,81 @@ const News = () => {
   );
 };
 
+const CourseCard = ({ c, t, index }: { c: CourseItem; t: typeof translations.fr; index: number }) => (
+  <motion.div
+    layout
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.35, delay: (index % 3) * 0.08 }}
+    whileHover={{ y: -10 }}
+    className="card course-card"
+    style={{ padding: 0 }}
+  >
+    <div className="course-image-wrap">
+      <img src={c.img} alt={c.title} className="course-image" loading="lazy" />
+      <span className="age-badge">{c.ageRange}</span>
+    </div>
+    <div style={{ padding: '32px' }}>
+      <span className={`level-badge level-${c.level}`}>{t.courses.levels[c.level]}</span>
+      <h3 style={{ fontSize: '1.5rem', marginTop: '16px' }}>{c.title}</h3>
+      <p style={{ color: 'var(--slate-500)', fontSize: '0.95rem', margin: '12px 0', lineHeight: '1.6' }}>{c.desc}</p>
+      <div style={{ display: 'flex', gap: '12px', margin: '16px 0', color: 'var(--slate-500)', fontSize: '0.95rem' }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <Clock size={16} /> {c.dur.includes('day') ? t.courses.day : t.courses.duration.replace('{d}', c.dur)}
+        </span>
+      </div>
+      <div style={{ fontSize: '0.9rem', color: c.prereq ? 'var(--dark)' : 'var(--slate-400)', marginBottom: '16px' }}>
+        <strong>{t.courses.prereqLabel} :</strong> {c.prereq ?? t.courses.noPrereq}
+      </div>
+      <div className="course-price">{t.courses.upcoming}</div>
+    </div>
+  </motion.div>
+);
+
 const Courses = () => {
   const { t } = useTranslation();
-  const handleBooking = (courseName: string) => {
-    alert(`${t.reservation.alert} (${courseName})`);
+  const adultsRef = useRef<HTMLDivElement>(null);
+  const teensRef = useRef<HTMLDivElement>(null);
+
+  const adultCourses = t.courses.list.filter(c => c.audience === 'adults');
+  const teenCourses = t.courses.list.filter(c => c.audience === 'teens');
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <PageTransition>
       <section className="section" style={{ paddingTop: '180px' }}>
         <div className="container">
-          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '80px' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '32px' }}>
             {t.courses.title.split('{span}')[0]} <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{t.courses.titleSpan}</span>{t.courses.title.split('{span}')[1]}
           </h2>
-          <div className="grid md-cols-3 gap-8">
-            {t.courses.list.map((c, i) => (
-              <div key={i} className="card course-card" style={{ padding: 0 }}>
-                <img src={[
-                  'duck_hf.png',
-                  'ia.jpg',
-                  'so100.jfif'
-                ][i]} alt={c.title} className="course-image" />
-                <div style={{ padding: '32px' }}>
-                  <h3 style={{ fontSize: '1.5rem' }}>{c.title}</h3>
-                  <div style={{ display: 'flex', gap: '12px', margin: '16px 0', color: 'var(--slate-500)', fontSize: '0.95rem' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Clock size={16} /> {c.dur.includes('day') ? t.courses.day : t.courses.duration.replace('{d}', c.dur)}
-                    </span>
-                  </div>
-                  <div className="course-price">{t.courses.upcoming}</div>
-                  <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => handleBooking(c.title)}>{t.courses.signUp}</button>
-                </div>
-              </div>
-            ))}
+
+          <div className="filter-tabs" style={{ marginBottom: '80px' }}>
+            <button className="filter-tab" onClick={() => scrollToSection(adultsRef)}>
+              <span className="filter-tab-label">{t.courses.audiences.adults}</span>
+            </button>
+            <button className="filter-tab" onClick={() => scrollToSection(teensRef)}>
+              <span className="filter-tab-label">{t.courses.audiences.teens}</span>
+            </button>
+          </div>
+
+          <div ref={adultsRef} className="course-section">
+            <h3 className="course-section-title">{t.courses.sections.adults.title}</h3>
+            <p className="course-section-desc">{t.courses.sections.adults.desc}</p>
+            <div className="grid courses-grid gap-8">
+              {adultCourses.map((c, i) => <CourseCard key={c.title} c={c} t={t} index={i} />)}
+            </div>
+          </div>
+
+          <div ref={teensRef} className="course-section" style={{ marginTop: '100px' }}>
+            <h3 className="course-section-title">{t.courses.sections.teens.title}</h3>
+            <p className="course-section-desc">{t.courses.sections.teens.desc}</p>
+            <div className="grid courses-grid gap-8">
+              {teenCourses.map((c, i) => <CourseCard key={c.title} c={c} t={t} index={i} />)}
+            </div>
           </div>
         </div>
       </section>
@@ -595,24 +666,175 @@ const Membership = () => {
           
           <div className="grid md-cols-2 gap-8" style={{ maxWidth: '950px', marginInline: 'auto' }}>
             {t.membership.plans.map((plan, i) => (
-              <div key={i} className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: i === 0 ? '3px solid var(--primary)' : '1px solid var(--slate-200)', position: 'relative' }}>
+              <motion.div
+                key={i}
+                className="card"
+                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: i === 0 ? '3px solid var(--primary)' : '1px solid var(--slate-200)', position: 'relative' }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -10 }}
+              >
                 <h4 style={{ fontSize: '1.85rem', marginBottom: '24px' }}>{plan.title}</h4>
-                <div style={{ fontSize: '4rem', fontWeight: 900, marginBottom: '32px', color: 'var(--dark)' }}>{i === 0 ? '60€' : '30€'}<span style={{ fontSize: '1.1rem', fontWeight: 400, color: 'var(--slate-400)' }}>{t.membership.perYear}</span></div>
+                <div style={{ fontSize: '2.1rem', fontWeight: 900, marginBottom: '8px', color: 'var(--dark)' }}>{t.membership.priceTBD}</div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--slate-400)', marginBottom: '32px', textAlign: 'center' }}>{t.membership.priceNote}</p>
                 <ul style={{ listStyle: 'none', width: '100%', marginBottom: '40px' }}>
                   {plan.perks.map((p, j) => <li key={j} style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px', fontSize: '1.05rem' }}><div style={{ backgroundColor: 'rgba(99, 102, 241, 0.1)', padding: '6px', borderRadius: '50%' }}><Shield size={16} style={{ color: 'var(--primary)' }} /></div> {p}</li>)}
                 </ul>
-                <button className="btn btn-primary" style={{ width: '100%', padding: '18px', backgroundColor: i === 0 ? 'var(--primary)' : 'var(--dark)' }}>{t.membership.btnJoin}</button>
-              </div>
+                <Link to="/interet" className="btn btn-primary" style={{ width: '100%', padding: '18px', backgroundColor: i === 0 ? 'var(--primary)' : 'var(--dark)', justifyContent: 'center' }}>{t.membership.btnJoin}</Link>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+    </PageTransition>
+  );
+};
 
-          <div className="donor-box">
-            <h3 style={{ color: 'white' }}>{t.membership.donor.title}</h3>
-            <p style={{ fontSize: '1.2rem', marginBottom: '32px', opacity: 0.9 }}>{t.membership.donor.desc}</p>
-            <button className="btn" style={{ backgroundColor: 'white', color: 'var(--primary)', padding: '18px 40px', fontSize: '1.1rem' }}>
-              <Heart size={20} style={{ marginRight: 10, color: 'var(--accent)' }} /> {t.membership.donor.btn}
-            </button>
-          </div>
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const Interest = () => {
+  const { t } = useTranslation();
+  const [isSending, setIsSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
+
+  const validateEmail = (value: string) => {
+    const valid = EMAIL_REGEX.test(value.trim());
+    setEmailError(!valid);
+    return valid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.current) return;
+
+    const formData = new FormData(form.current);
+    const email = (formData.get('email') as string) || '';
+
+    if (!validateEmail(email)) {
+      form.current.querySelector<HTMLInputElement>('input[name="email"]')?.focus();
+      return;
+    }
+
+    setIsSending(true);
+    setError(false);
+
+    formData.append('_subject', "Nouvelle manifestation d'intérêt - FabRobotik");
+
+    // Réutilise l'endpoint Formspree de réservation par défaut, ou un endpoint dédié si configuré
+    const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_INTEREST_URL || import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/votre_id';
+
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSent(true);
+        form.current?.reset();
+      } else {
+        throw new Error('Formspree error');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError(true);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  return (
+    <PageTransition>
+      <section className="section" style={{ paddingTop: '180px' }}>
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <h2 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginBottom: '32px' }}>{t.interest.title}</h2>
+          <p style={{ color: 'var(--slate-600)', marginBottom: '48px', fontSize: '1.2rem' }}>{t.interest.desc}</p>
+
+          <AnimatePresence mode="wait">
+          {sent ? (
+            <motion.div
+              key="success"
+              className="card"
+              style={{ textAlign: 'center', padding: '60px 40px' }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', delay: 0.15, bounce: 0.5 }}
+              >
+                <CheckCircle2 size={48} style={{ color: 'var(--primary)', marginBottom: '24px' }} />
+              </motion.div>
+              <p style={{ fontSize: '1.2rem' }}>{t.interest.success}</p>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="form"
+              className="form-card"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+            >
+              <form ref={form} onSubmit={handleSubmit}>
+                <p style={{ fontSize: '0.85rem', color: 'var(--slate-400)', marginBottom: '28px' }}>
+                  <span className="required-asterisk">*</span> {t.interest.requiredLegend}
+                </p>
+                <div className="form-group" style={{ marginBottom: '24px' }}>
+                  <label className="form-label"><User size={16} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t.interest.name} <span className="required-asterisk">*</span></label>
+                  <input type="text" name="nom" className="form-input" placeholder={t.interest.namePlaceholder} required />
+                </div>
+                <div className="form-group" style={{ marginBottom: '24px' }}>
+                  <label className="form-label"><Mail size={16} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t.interest.email} <span className="required-asterisk">*</span></label>
+                  <input
+                    type="email"
+                    name="email"
+                    className={`form-input ${emailError ? 'input-error' : ''}`}
+                    placeholder={t.interest.emailPlaceholder}
+                    required
+                    aria-invalid={emailError}
+                    onBlur={(e) => e.target.value && validateEmail(e.target.value)}
+                    onChange={(e) => { if (emailError) validateEmail(e.target.value); }}
+                  />
+                  {emailError && <p style={{ color: 'var(--danger)', fontSize: '0.85rem', marginTop: '8px' }}>{t.interest.emailInvalid}</p>}
+                </div>
+                <div className="form-group" style={{ marginBottom: '24px' }}>
+                  <label className="form-label">{t.interest.profile} <span className="required-asterisk">*</span></label>
+                  <select name="profil" className="form-select" required defaultValue="">
+                    <option value="" disabled>-</option>
+                    {t.interest.profileOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                  </select>
+                </div>
+                <div className="form-group" style={{ marginBottom: '24px' }}>
+                  <label className="form-label">{t.interest.lookingFor} <span className="required-asterisk">*</span></label>
+                  <textarea name="recherche" className="form-input" rows={3} placeholder={t.interest.lookingForPlaceholder} required style={{ resize: 'vertical' }} />
+                </div>
+                <div className="form-group" style={{ marginBottom: '32px' }}>
+                  <label className="form-label">{t.interest.help}</label>
+                  <textarea name="aide_proposee" className="form-input" rows={3} placeholder={t.interest.helpPlaceholder} style={{ resize: 'vertical' }} />
+                </div>
+                {error && <p style={{ color: 'var(--danger)', marginBottom: '24px' }}>{t.interest.error}</p>}
+                <button
+                  className="btn btn-primary"
+                  style={{ width: '100%', padding: '20px', fontSize: '1.1rem' }}
+                  disabled={isSending}
+                >
+                  {isSending ? t.interest.sending : t.interest.submit}
+                </button>
+              </form>
+            </motion.div>
+          )}
+          </AnimatePresence>
         </div>
       </section>
     </PageTransition>
@@ -640,6 +862,7 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/reservation" element={<Reservation />} />
                 <Route path="/membership" element={<Membership />} />
+                <Route path="/interet" element={<Interest />} />
               </Routes>
             </AnimatePresence>
           </main>

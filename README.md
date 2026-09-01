@@ -28,14 +28,14 @@ In the `Footer` component (inside `src/App.tsx`), update the `href` attributes f
 *   GitHub (`https://github.com/fabrobotik`)
 
 ### 3. Pricing & Membership
-If your fees change, update the following components:
-*   **Courses**: Update the `price` and `dur` (duration) fields in the `Courses` component.
-*   **Membership**: Update the `price` and `perks` in the `Membership` component.
+Membership fees are **not yet defined** and currently show a placeholder ("Tarif à définir" / "Price to be defined") — see `membership.priceTBD` / `membership.priceNote` in `src/translations.ts`. Once fees are decided:
+*   **Courses**: Update the `desc`, `dur`, `level` and `prereq` fields in the `courses.list` array in `src/translations.ts`.
+*   **Membership**: Replace `priceTBD` with the real amount(s) in the `Membership` component (`src/App.tsx`) and `membership.plans` in `src/translations.ts`.
 
-### 4. Machine Reservation (EmailJS)
-The reservation form is currently a visual prototype. To make it functional, you should integrate [EmailJS](https://www.emailjs.com/):
-1. Create an account on EmailJS.
-2. Replace the `alert` in the `sendEmail` function (inside the `Reservation` component) with the EmailJS send logic.
+### 4. Forms (Formspree)
+The **Reservation** (`/reservation`) and **Express Interest** (`/interet`) forms both submit via [Formspree](https://formspree.io/). Configure the endpoint via env var (see `.env` / GitHub Secrets):
+*   `VITE_FORMSPREE_URL` — used by both forms by default.
+*   `VITE_FORMSPREE_INTEREST_URL` — optional, set this if you want interest submissions routed to a separate Formspree form instead of sharing the reservation one.
 
 ---
 

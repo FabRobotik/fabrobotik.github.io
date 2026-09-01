@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fabrobotik.github.io/news</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fabrobotik.github.io/cours</loc>
     <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -32,7 +38,13 @@
   </url>
   <url>
     <loc>https://fabrobotik.github.io/membership</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fabrobotik.github.io/interet</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
